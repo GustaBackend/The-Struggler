@@ -44,11 +44,16 @@ minecraft {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
-    // Add third-party repositories only when a selected dependency requires them.
+    maven {
+        name = 'GeckoLib'
+        url = 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+        content { includeGroup('software.bernie.geckolib') }
+    }
 }
 
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+    implementation fg.deobf('software.bernie.geckolib:geckolib-forge-1.20.1:4.7.2')
 }
 
 tasks.named('processResources', ProcessResources).configure {
