@@ -40,6 +40,7 @@ public final class GuardCombatGoal extends Goal {
     @Override
     public void stop() {
         this.guard.cancelStrike();
+        this.guard.stopBlocking();
         this.guard.getNavigation().stop();
         this.repathCooldown = 0;
     }
@@ -67,6 +68,8 @@ public final class GuardCombatGoal extends Goal {
 
         double reach = GuardCombatTuning.ATTACK_REACH;
         if (this.guard.distanceToSqr(target) > reach * reach) {
+            // Chasing means the shield comes down: a guard never blocks and runs.
+            this.guard.stopBlocking();
             this.chase(target);
             return;
         }
@@ -74,6 +77,14 @@ public final class GuardCombatGoal extends Goal {
         this.guard.getNavigation().stop();
         if (this.guard.canStartStrike() && this.guard.getSensing().hasLineOfSight(target)) {
             this.guard.beginStrike(target);
+            return;
+        }
+
+        // In reach but still on cooldown: hold the shield instead of standing
+        // open to a free hit. The window is bounded by BLOCK_HOLD_TICKS.
+        double blockRange = GuardCombatTuning.BLOCK_TRIGGER_RANGE;
+        if (this.guard.distanceToSqr(target) <= blockRange * blockRange) {
+            this.guard.startBlocking();
         }
     }
 

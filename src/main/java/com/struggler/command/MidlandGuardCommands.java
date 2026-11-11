@@ -65,8 +65,9 @@ public final class MidlandGuardCommands {
 
     private static String[] suggestions() {
         String[] actions = GuardAnimation.Action.commandNames();
-        String[] all = Arrays.copyOf(actions, actions.length + 1);
+        String[] all = Arrays.copyOf(actions, actions.length + 2);
         all[actions.length] = "status";
+        all[actions.length + 1] = "block";
         return all;
     }
 
@@ -76,7 +77,9 @@ public final class MidlandGuardCommands {
         String targetName = target == null ? "none" : target.getName().getString();
         String line = String.format(Locale.ROOT,
                 "Guard status: phase=%s target=%s cooldown=%dt strikes=%d impactAttempts=%d "
-                        + "damageHits=%d attackDamage=%.1f difficulty=%s",
+                        + "damageHits=%d attackDamage=%.1f difficulty=%s "
+                        + "blocking=%s blockTicks=%d blockedHits=%d prevented=%.1f "
+                        + "blockAttempts=%d blockRefusals=%d",
                 guard.getCombatPhase().name(),
                 targetName,
                 guard.getCooldownTicks(),
@@ -84,7 +87,13 @@ public final class MidlandGuardCommands {
                 guard.getImpactAttempts(),
                 guard.getDamageHits(),
                 guard.getAttributeValue(Attributes.ATTACK_DAMAGE),
-                guard.level().getDifficulty().name());
+                guard.level().getDifficulty().name(),
+                guard.isShieldRaised(),
+                guard.getBlockTicksRemaining(),
+                guard.getBlockedHits(),
+                guard.getDamagePrevented(),
+                guard.getBlockAttempts(),
+                guard.getBlockRefusals());
         source.sendSuccess(() -> Component.literal(line), true);
         return 1;
     }
@@ -96,6 +105,21 @@ public final class MidlandGuardCommands {
         if ("reset".equals(actionName)) {
             guard.resetPreviewAction();
             source.sendSuccess(() -> Component.literal("Midland Guard animation preview reset."), true);
+            return 1;
+        }
+
+        // QA helper: raises the real server-side shield state so damage reduction can
+        // be measured from the console. It calls the same startBlocking path the combat
+        // goal uses, so it cannot demonstrate a rule the gameplay does not have.
+        if ("block".equals(actionName)) {
+            guard.startBlocking();
+            if (!guard.isShieldRaised()) {
+                source.sendFailure(Component.literal(
+                        "Midland Guard cannot raise the shield right now (mid-strike)."));
+                return 0;
+            }
+            source.sendSuccess(() -> Component.literal("Midland Guard shield raised for "
+                    + guard.getBlockTicksRemaining() + " ticks."), true);
             return 1;
         }
 

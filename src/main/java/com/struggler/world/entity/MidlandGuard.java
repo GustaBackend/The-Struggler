@@ -7,6 +7,7 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PathfinderMob;
@@ -55,6 +56,7 @@ public class MidlandGuard extends PathfinderMob implements GeoEntity {
             "run", RawAnimation.begin().thenLoop("animation.midland_guard.run"),
             "attack", RawAnimation.begin().thenPlay("animation.midland_guard.attack"),
             "defend", RawAnimation.begin().thenPlay("animation.midland_guard.defend"),
+            "block", RawAnimation.begin().thenLoop("animation.midland_guard.block"),
             "hurt", RawAnimation.begin().thenPlay("animation.midland_guard.hurt"),
             "death", RawAnimation.begin().thenPlayAndHold("animation.midland_guard.death"));
 
@@ -70,6 +72,12 @@ public class MidlandGuard extends PathfinderMob implements GeoEntity {
     /** World game time until which the attack clip should own the model. */
     private static final EntityDataAccessor<Long> DATA_ATTACK_ANIM_UNTIL =
             SynchedEntityData.defineId(MidlandGuard.class, EntityDataSerializers.LONG);
+    /**
+     * True while the shield is up. Synchronized because the defensive pose is a
+     * real server state that every tracking client must render, not a local guess.
+     */
+    private static final EntityDataAccessor<Boolean> DATA_BLOCKING =
+            SynchedEntityData.defineId(MidlandGuard.class, EntityDataSerializers.BOOLEAN);
 
     private static final double PREVIEW_WALK_SPEED = 0.80D;
     private static final double PREVIEW_RUN_SPEED = 1.25D;
@@ -85,6 +93,13 @@ public class MidlandGuard extends PathfinderMob implements GeoEntity {
     private int strikeCount;
     private int impactAttempts;
     private int damageHits;
+    /** Server-only defense state; the synced flag above mirrors it for rendering. */
+    private long blockUntilTick;
+    private int blockedHits;
+    private float damagePrevented;
+    /** QA counters: how often a block was requested and why it was refused. */
+    private int blockAttempts;
+    private int blockRefusals;
 
     private long renderedPreviewStamp = Long.MIN_VALUE;
     private int renderedStrikeId = -1;
@@ -128,6 +143,12 @@ public class MidlandGuard extends PathfinderMob implements GeoEntity {
 
         if (this.hurtTime > 0) {
             return state.setAndContinue(ANIMATIONS.get("hurt"));
+        }
+
+        // The shield pose is a real synchronized state: it outranks locomotion and
+        // the QA preview, and it is always cleared before a strike starts.
+        if (isShieldRaised()) {
+            return state.setAndContinue(ANIMATIONS.get("block"));
         }
 
         if (isPreviewActionActive()) {
@@ -174,6 +195,7 @@ public class MidlandGuard extends PathfinderMob implements GeoEntity {
         this.entityData.define(DATA_PREVIEW_EXPIRES_AT, 0L);
         this.entityData.define(DATA_STRIKE_ID, 0);
         this.entityData.define(DATA_ATTACK_ANIM_UNTIL, 0L);
+        this.entityData.define(DATA_BLOCKING, false);
     }
 
     // ------------------------------------------------------------------
@@ -216,6 +238,9 @@ public class MidlandGuard extends PathfinderMob implements GeoEntity {
         if (this.level().isClientSide) {
             return;
         }
+        // Attacking and blocking are mutually exclusive on purpose: the shield is
+        // lowered the moment the guard commits to a swing.
+        this.stopBlocking();
         this.strikeTarget = target;
         this.strikeAge = 0;
         this.impactApplied = false;
@@ -307,6 +332,115 @@ public class MidlandGuard extends PathfinderMob implements GeoEntity {
         this.impactApplied = false;
         this.strikeAge = 0;
         this.nextAttackTick = 0L;
+        this.stopBlocking();
+    }
+
+    // ------------------------------------------------------------------
+    // Shield defense (server authoritative, version 0.3.2)
+    // ------------------------------------------------------------------
+
+    /**
+     * Raises the shield for {@link GuardCombatTuning#BLOCK_HOLD_TICKS} ticks.
+     * Refused while a strike is being resolved, so attack and defense can never
+     * overlap by accident. The synced flag is only written on the server.
+     */
+    public void startBlocking() {
+        if (!this.level().isClientSide) {
+            this.blockAttempts++;
+        }
+        if (this.level().isClientSide || this.isStrikeInProgress()) {
+            if (!this.level().isClientSide) {
+                this.blockRefusals++;
+            }
+            return;
+        }
+        this.blockUntilTick = this.level().getGameTime() + GuardCombatTuning.BLOCK_HOLD_TICKS;
+        if (!this.entityData.get(DATA_BLOCKING)) {
+            this.entityData.set(DATA_BLOCKING, true);
+            this.getNavigation().stop();
+        }
+    }
+
+    /** Lowers the shield immediately; safe to call repeatedly. */
+    public void stopBlocking() {
+        this.blockUntilTick = 0L;
+        if (!this.level().isClientSide && this.entityData.get(DATA_BLOCKING)) {
+            this.entityData.set(DATA_BLOCKING, false);
+        }
+    }
+
+    /** True while the shield is up, on both sides (the flag is synchronized). */
+    public boolean isShieldRaised() {
+        return this.entityData.get(DATA_BLOCKING);
+    }
+
+    public int getBlockTicksRemaining() {
+        return (int) Math.max(0L, this.blockUntilTick - this.level().getGameTime());
+    }
+
+    public int getBlockedHits() {
+        return this.blockedHits;
+    }
+
+    public float getDamagePrevented() {
+        return this.damagePrevented;
+    }
+
+    public int getBlockAttempts() {
+        return this.blockAttempts;
+    }
+
+    public int getBlockRefusals() {
+        return this.blockRefusals;
+    }
+
+    /** Ends the defensive window once it expires or a strike takes over. */
+    private void tickDefense() {
+        if (this.level().isClientSide) {
+            return;
+        }
+        if (this.isStrikeInProgress() || this.level().getGameTime() >= this.blockUntilTick) {
+            this.stopBlocking();
+        }
+    }
+
+    /** True when the attacker is inside the frontal arc the shield covers. */
+    private boolean isAttackerInFront(LivingEntity attacker) {
+        Vec3 look = this.getLookAngle();
+        Vec3 toAttacker = attacker.position().subtract(this.position());
+        return GuardDefenseRules.isInsideFrontalCone(look.x, look.z, toAttacker.x, toAttacker.z);
+    }
+
+    /**
+     * Single reduction point for the whole mod.
+     *
+     * <p>The shield only covers directional hits that arrive inside the frontal
+     * arc while the block state is active; everything else (fire, fall, magic,
+     * explosions, backstabs, hits taken during a swing) reaches
+     * {@code super.hurt} untouched. Because the reduction is applied here and
+     * nowhere else, the same hit can never be reduced twice.</p>
+     */
+    @Override
+    public boolean hurt(DamageSource source, float amount) {
+        boolean shieldUp = !this.level().isClientSide && this.isShieldRaised();
+        LivingEntity attacker = source.getEntity() instanceof LivingEntity living ? living : null;
+        boolean frontal = shieldUp && attacker != null && this.isAttackerInFront(attacker);
+
+        float applied = frontal ? GuardDefenseRules.reducedDamage(amount) : amount;
+        boolean damaged = super.hurt(source, applied);
+
+        if (damaged && !this.level().isClientSide) {
+            if (frontal) {
+                this.blockedHits++;
+                this.damagePrevented += Math.max(0.0F, amount - applied);
+            }
+            // A frontal hit is a reason to keep the shield up, even if the guard
+            // had no target yet: the next hit is already covered.
+            if (attacker != null && this.isAttackerInFront(attacker)) {
+                this.startBlocking();
+            }
+        }
+        return damaged;
     }
 
     /**
@@ -445,6 +579,10 @@ public class MidlandGuard extends PathfinderMob implements GeoEntity {
     protected void customServerAiStep() {
         super.customServerAiStep();
 
+        // The shield window is resolved before any goal runs, so a strike that
+        // starts on this tick already finds the block cleared.
+        this.tickDefense();
+
         // Real combat owns navigation. The QA preview may never stop a chase,
         // redirect the guard or interfere with the strike/cooldown timeline.
         if (isCombatActive()) {
@@ -510,6 +648,10 @@ public class MidlandGuard extends PathfinderMob implements GeoEntity {
         tag.putInt("CombatImpactAttempts", this.impactAttempts);
         tag.putInt("CombatDamageHits", this.damageHits);
         tag.putInt("CombatCooldown", this.getCooldownTicks());
+        tag.putBoolean("DefenseBlocking", this.isShieldRaised());
+        tag.putInt("DefenseBlockTicks", this.getBlockTicksRemaining());
+        tag.putInt("DefenseBlockedHits", this.blockedHits);
+        tag.putFloat("DefenseDamagePrevented", this.damagePrevented);
     }
 
     /**
