@@ -1,0 +1,18 @@
+.gradle/
+build/
+out/
+run/
+
+# IDE files
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+
+# Local logs and crash reports
+logs/
+crash-reports/
+
+# macOS
+.DS_Store
