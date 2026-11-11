@@ -32,7 +32,9 @@ minecraft {
         server {
             args '--nogui'
         }
-        gameTestServer {}
+        gameTestServer {
+            property 'forge.enabledGameTestNamespaces', mod_id
+        }
         data {
             args '--mod', mod_id, '--all',
                  '--output', file('src/generated/resources/'),
@@ -44,6 +46,7 @@ minecraft {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
+    mavenCentral()
     maven {
         name = 'GeckoLib'
         url = 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
@@ -54,6 +57,16 @@ repositories {
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     implementation fg.deobf('software.bernie.geckolib:geckolib-forge-1.20.1:4.7.2')
+
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test', Test).configure {
+    useJUnitPlatform()
+    testLogging {
+        events 'passed', 'failed', 'skipped'
+    }
 }
 
 tasks.named('processResources', ProcessResources).configure {
@@ -85,5 +98,15 @@ publishing {
     }
     repositories {
         maven { url "file://${project.projectDir}/mcmodsrepo" }
+    }
+}
+
+// GameTest loads fallback structures from <gameDir>/gameteststructures/*.snbt.
+tasks.matching { it.name == 'runGameTestServer' }.configureEach {
+    doFirst {
+        copy {
+            from 'src/gametest/resources/gameteststructures'
+            into 'run/gameteststructures'
+        }
     }
 }

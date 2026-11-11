@@ -1,0 +1,4 @@
+Branch de trabalho: feature/midland-guard-combat-0.3.1
+Base: tag v0.2.0-vanilla-geckolib -> 2ff4b326ab8d1bab1ff43c2a63b872e097bd38b2
+Código publicado da 0.2.0: 12a699d2679a91e05fe6c8cc7b83fa09f352bc0c
+Branch principal preservada na versão 0.1.0.
