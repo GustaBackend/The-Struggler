@@ -12,8 +12,6 @@ package com.struggler.world.entity;
 public final class GuardDefenseRules {
     /** Below this length a direction vector carries no usable heading. */
     private static final double MIN_DIRECTION_LENGTH = 1.0E-4D;
-    /** Two entities closer than this on the horizontal plane count as frontal. */
-    public static final double CONTACT_DISTANCE = 0.1D;
 
     private GuardDefenseRules() {
     }

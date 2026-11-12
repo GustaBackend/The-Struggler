@@ -47,12 +47,8 @@ public final class GuardCombatTuning {
     public static final double BLOCK_HALF_ANGLE_DEGREES = 60.0D;
     /** Ticks the shield stays up after the last reason to block. */
     public static final int BLOCK_HOLD_TICKS = 20;
-    /** Distance at which a target justifies raising the shield instead of chasing. */
-    public static final double BLOCK_TRIGGER_RANGE = 4.0D;
     /** A blocked hit never drops below this value, so the guard is never invulnerable. */
     public static final double BLOCK_MIN_DAMAGE = 1.0D;
-    /** Authored length of the looping block clip, in ticks (1.2 s). */
-    public static final int BLOCK_CLIP_TICKS = 24;
 
     private GuardCombatTuning() {
     }

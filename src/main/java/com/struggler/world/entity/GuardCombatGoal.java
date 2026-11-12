@@ -82,10 +82,12 @@ public final class GuardCombatGoal extends Goal {
 
         // In reach but still on cooldown: hold the shield instead of standing
         // open to a free hit. The window is bounded by BLOCK_HOLD_TICKS.
-        double blockRange = GuardCombatTuning.BLOCK_TRIGGER_RANGE;
-        if (this.guard.distanceToSqr(target) <= blockRange * blockRange) {
-            this.guard.startBlocking();
-        }
+        //
+        // The old code re-tested a 4.0 block range here, but this branch only
+        // runs when the guard is already inside ATTACK_REACH (2.4), so that test
+        // could never be false. The stance therefore begins exactly at melee
+        // reach, which is the behaviour the tests already measured.
+        this.guard.startBlocking();
     }
 
     private void chase(LivingEntity target) {

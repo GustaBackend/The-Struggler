@@ -177,6 +177,32 @@ public final class GuardDefenseGameTests {
     }
 
     /**
+     * 0.3.3: the window must expire even when the AI step does not run. A guard
+     * with NoAI used to freeze in the block pose forever, which is exactly the
+     * stuck visual state the refinement forbids.
+     */
+    @GameTest(template = ARENA, timeoutTicks = 200, batch = "guardDefenseNoAi")
+    public static void blockingEndsWithoutAi(GameTestHelper helper) {
+        MidlandGuard guard = helper.spawn(ModEntities.MIDLAND_GUARD.get(), 4, 1, 4);
+        guard.setTarget(null);
+        guard.setNoAi(true);
+        guard.startBlocking();
+
+        if (!guard.isShieldRaised()) {
+            helper.fail("guard refused to raise the shield with AI disabled");
+            return;
+        }
+
+        helper.runAfterDelay(GuardCombatTuning.BLOCK_HOLD_TICKS + 10, () -> {
+            if (guard.isShieldRaised()) {
+                helper.fail("shield stayed up with NoAI: the defensive window never expired");
+                return;
+            }
+            helper.succeed();
+        });
+    }
+
+    /**
      * Requirement 7 and 9: the guard blocks between strikes on its own, the
      * block is cleared while it attacks, and it returns to combat afterwards.
      */

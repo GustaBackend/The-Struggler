@@ -124,42 +124,33 @@ public class MidlandGuard extends PathfinderMob implements GeoEntity {
     }
 
     /**
-     * Priority: death, real strike window, hurt, QA preview, locomotion.
-     * A strike window outranks hurt on purpose: taking a hit must not cancel
-     * the swing that the server is already resolving.
+     * Priority is decided by {@link GuardAnimationPriority} so the same order is
+     * asserted by unit tests instead of only being observable in game.
      */
     private PlayState animationState(AnimationState<MidlandGuard> state) {
-        if (this.deathTime > 0) {
-            return state.setAndContinue(ANIMATIONS.get("death"));
-        }
+        boolean previewActive = isPreviewActionActive();
+        String previewClip = previewActive ? getRawPreviewAction().commandName() : null;
+        String clip = GuardAnimationPriority.resolve(
+                this.deathTime > 0,
+                isAttackAnimationActive(),
+                this.hurtTime > 0,
+                isShieldRaised(),
+                previewActive,
+                previewClip,
+                state.isMoving());
 
-        if (isAttackAnimationActive()) {
+        if (GuardAnimationPriority.ATTACK.equals(clip)) {
             if (getStrikeId() != this.renderedStrikeId) {
                 this.renderedStrikeId = getStrikeId();
                 state.resetCurrentAnimation();
             }
-            return state.setAndContinue(ANIMATIONS.get("attack"));
+        } else if (previewClip != null && previewClip.equals(clip)
+                && this.renderedPreviewStamp != getPreviewActionStartedAt()) {
+            this.renderedPreviewStamp = getPreviewActionStartedAt();
+            state.resetCurrentAnimation();
         }
 
-        if (this.hurtTime > 0) {
-            return state.setAndContinue(ANIMATIONS.get("hurt"));
-        }
-
-        // The shield pose is a real synchronized state: it outranks locomotion and
-        // the QA preview, and it is always cleared before a strike starts.
-        if (isShieldRaised()) {
-            return state.setAndContinue(ANIMATIONS.get("block"));
-        }
-
-        if (isPreviewActionActive()) {
-            if (this.renderedPreviewStamp != getPreviewActionStartedAt()) {
-                this.renderedPreviewStamp = getPreviewActionStartedAt();
-                state.resetCurrentAnimation();
-            }
-            return state.setAndContinue(ANIMATIONS.get(getPreviewAction().commandName()));
-        }
-
-        return state.setAndContinue(ANIMATIONS.get(state.isMoving() ? "walk" : "idle"));
+        return state.setAndContinue(ANIMATIONS.get(clip));
     }
 
     public static AttributeSupplier.Builder createAttributes() {
@@ -405,26 +396,29 @@ public class MidlandGuard extends PathfinderMob implements GeoEntity {
     }
 
     /** True when the attacker is inside the frontal arc the shield covers. */
-    private boolean isAttackerInFront(LivingEntity attacker) {
+    private boolean isPointInFront(Vec3 point) {
         Vec3 look = this.getLookAngle();
-        Vec3 toAttacker = attacker.position().subtract(this.position());
-        return GuardDefenseRules.isInsideFrontalCone(look.x, look.z, toAttacker.x, toAttacker.z);
+        Vec3 toPoint = point.subtract(this.position());
+        return GuardDefenseRules.isInsideFrontalCone(look.x, look.z, toPoint.x, toPoint.z);
     }
 
     /**
-     * Single reduction point for the whole mod.
+     * Single reduction point for the whole mod, now guarded by an explicit policy.
      *
-     * <p>The shield only covers directional hits that arrive inside the frontal
-     * arc while the block state is active; everything else (fire, fall, magic,
-     * explosions, backstabs, hits taken during a swing) reaches
-     * {@code super.hurt} untouched. Because the reduction is applied here and
-     * nowhere else, the same hit can never be reduced twice.</p>
+     * <p>{@link GuardDamagePolicy} decides whether a shield can physically stop
+     * the source at all; only defensible classes (physical contact and physical
+     * projectiles) can then be reduced, and only when the origin of the attack
+     * lies inside the frontal arc while the shield is up. Magic, fire, fall,
+     * explosions, environment damage and anything tagged as bypassing the shield
+     * reach {@code super.hurt} untouched. Because the reduction is applied here
+     * and nowhere else, the same hit can never be reduced twice.</p>
      */
     @Override
     public boolean hurt(DamageSource source, float amount) {
+        GuardDamageClass damageClass = GuardDamagePolicy.of(source);
+        Vec3 origin = damageClass.isDefensible() ? GuardDamagePolicy.originOf(source) : null;
         boolean shieldUp = !this.level().isClientSide && this.isShieldRaised();
-        LivingEntity attacker = source.getEntity() instanceof LivingEntity living ? living : null;
-        boolean frontal = shieldUp && attacker != null && this.isAttackerInFront(attacker);
+        boolean frontal = shieldUp && origin != null && this.isPointInFront(origin);
 
         float applied = frontal ? GuardDefenseRules.reducedDamage(amount) : amount;
         boolean damaged = super.hurt(source, applied);
@@ -434,13 +428,23 @@ public class MidlandGuard extends PathfinderMob implements GeoEntity {
                 this.blockedHits++;
                 this.damagePrevented += Math.max(0.0F, amount - applied);
             }
-            // A frontal hit is a reason to keep the shield up, even if the guard
-            // had no target yet: the next hit is already covered.
-            if (attacker != null && this.isAttackerInFront(attacker)) {
+            // A defensible frontal hit is a reason to keep the shield up, even if
+            // the guard had no target yet: the next hit is already covered. A
+            // fireball or a spell from the front is not a reason to raise it.
+            if (origin != null && this.isPointInFront(origin)) {
                 this.startBlocking();
             }
         }
         return damaged;
+    }
+
+    /** A dead guard drops the shield; the synced flag must never stay stuck on. */
+    @Override
+    public void die(DamageSource source) {
+        this.stopBlocking();
+        this.combatPhase = GuardCombatPhase.IDLE;
+        this.strikeTarget = null;
+        super.die(source);
     }
 
     /**
@@ -579,10 +583,6 @@ public class MidlandGuard extends PathfinderMob implements GeoEntity {
     protected void customServerAiStep() {
         super.customServerAiStep();
 
-        // The shield window is resolved before any goal runs, so a strike that
-        // starts on this tick already finds the block cleared.
-        this.tickDefense();
-
         // Real combat owns navigation. The QA preview may never stop a chase,
         // redirect the guard or interfere with the strike/cooldown timeline.
         if (isCombatActive()) {
@@ -615,6 +615,12 @@ public class MidlandGuard extends PathfinderMob implements GeoEntity {
     @Override
     public void tick() {
         super.tick();
+        // The shield window is resolved on every server tick, not inside the AI
+        // step: a guard whose AI is disabled (NoAI, QA captures) must still lower
+        // the shield when the window ends instead of freezing in the block pose.
+        if (!this.level().isClientSide) {
+            this.tickDefense();
+        }
         if (!this.level().isClientSide && !this.isPreviewActionActive()
                 && this.getPreviewActionExpiresAt() != 0) {
             this.resetPreviewAction();
