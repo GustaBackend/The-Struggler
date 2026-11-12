@@ -1,0 +1,47 @@
+diff -ru /home/ubuntu/gecko-migration/javap/4.7.2/software_bernie_geckolib_core_animation_AnimationController.txt /home/ubuntu/gecko-migration/javap/4.8.4/software_bernie_geckolib_core_animation_AnimationController.txt
+--- /home/ubuntu/gecko-migration/javap/4.7.2/software_bernie_geckolib_core_animation_AnimationController.txt	2026-11-12 03:08:26.704703476 +0000
++++ /home/ubuntu/gecko-migration/javap/4.8.4/software_bernie_geckolib_core_animation_AnimationController.txt	2026-11-12 03:08:26.856705931 +0000
+@@ -101,6 +101,9 @@
+   public software.bernie.geckolib.core.animation.AnimationController$State getAnimationState();
+     descriptor: ()Lsoftware/bernie/geckolib/core/animation/AnimationController$State;
+
++  public software.bernie.geckolib.core.animation.AnimationController$AnimationStateHandler<T> getStateHandler();
++    descriptor: ()Lsoftware/bernie/geckolib/core/animation/AnimationController$AnimationStateHandler;
++
+   public java.util.Map<java.lang.String, software.bernie.geckolib.core.keyframe.BoneAnimationQueue> getBoneAnimationQueues();
+     descriptor: ()Ljava/util/Map;
+
+diff -ru /home/ubuntu/gecko-migration/javap/4.7.2/software_bernie_geckolib_core_animation_RawAnimation.txt /home/ubuntu/gecko-migration/javap/4.8.4/software_bernie_geckolib_core_animation_RawAnimation.txt
+--- /home/ubuntu/gecko-migration/javap/4.7.2/software_bernie_geckolib_core_animation_RawAnimation.txt	2026-11-12 03:08:27.268712592 +0000
++++ /home/ubuntu/gecko-migration/javap/4.8.4/software_bernie_geckolib_core_animation_RawAnimation.txt	2026-11-12 03:08:27.408714871 +0000
+@@ -1,5 +1,8 @@
+ Compiled from "RawAnimation.java"
+ public final class software.bernie.geckolib.core.animation.RawAnimation {
++  public software.bernie.geckolib.core.animation.RawAnimation(java.util.List<software.bernie.geckolib.core.animation.RawAnimation$Stage>);
++    descriptor: (Ljava/util/List;)V
++
+   public static software.bernie.geckolib.core.animation.RawAnimation begin();
+     descriptor: ()Lsoftware/bernie/geckolib/core/animation/RawAnimation;
+
+@@ -27,6 +30,9 @@
+   public static software.bernie.geckolib.core.animation.RawAnimation copyOf(software.bernie.geckolib.core.animation.RawAnimation);
+     descriptor: (Lsoftware/bernie/geckolib/core/animation/RawAnimation;)Lsoftware/bernie/geckolib/core/animation/RawAnimation;
+
++  public int getStageCount();
++    descriptor: ()I
++
+   public boolean equals(java.lang.Object);
+     descriptor: (Ljava/lang/Object;)Z
+
+diff -ru /home/ubuntu/gecko-migration/javap/4.7.2/software_bernie_geckolib_renderer_GeoEntityRenderer.txt /home/ubuntu/gecko-migration/javap/4.8.4/software_bernie_geckolib_renderer_GeoEntityRenderer.txt
+--- /home/ubuntu/gecko-migration/javap/4.7.2/software_bernie_geckolib_renderer_GeoEntityRenderer.txt	2026-11-12 03:08:28.932739485 +0000
++++ /home/ubuntu/gecko-migration/javap/4.8.4/software_bernie_geckolib_renderer_GeoEntityRenderer.txt	2026-11-12 03:08:29.080741854 +0000
+@@ -14,6 +14,9 @@
+     descriptor: Lorg/joml/Matrix4f;
+   protected org.joml.Matrix4f modelRenderTranslations;
+     descriptor: Lorg/joml/Matrix4f;
++  public software.bernie.geckolib.renderer.GeoEntityRenderer(net.minecraft.client.renderer.entity.EntityRendererProvider$Context, net.minecraft.world.entity.EntityType<? extends T>);
++    descriptor: (Lnet/minecraft/client/renderer/entity/EntityRendererProvider$Context;Lnet/minecraft/world/entity/EntityType;)V
++
+   public software.bernie.geckolib.renderer.GeoEntityRenderer(net.minecraft.client.renderer.entity.EntityRendererProvider$Context, software.bernie.geckolib.model.GeoModel<T>);
+     descriptor: (Lnet/minecraft/client/renderer/entity/EntityRendererProvider$Context;Lsoftware/bernie/geckolib/model/GeoModel;)V

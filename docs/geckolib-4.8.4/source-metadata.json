@@ -1,0 +1,76 @@
+{
+  "purpose": "Controlled GeckoLib migration inspection for The Struggler",
+  "inspected_at_utc": "2026-11-12T03:09:20Z",
+  "official_project": {
+    "modrinth_project_id": "8BmcQJ2H",
+    "modrinth_project_url": "https://modrinth.com/mod/geckolib",
+    "project_name": "Geckolib"
+  },
+  "target": {
+    "local_path": "/home/ubuntu/gecko-migration/geckolib-forge-1.20.1-4.8.4.jar",
+    "modrinth_api_url": "https://api.modrinth.com/v2/version/aC5KMoNg",
+    "cdn_url": "https://cdn.modrinth.com/data/8BmcQJ2H/versions/aC5KMoNg/geckolib-forge-1.20.1-4.8.4.jar",
+    "version_id": "aC5KMoNg",
+    "file_id": "dqsu6n3D",
+    "version_number": "4.8.4",
+    "name": "Forge 1.20.1",
+    "loaders": ["forge"],
+    "game_versions": ["1.20.1"],
+    "date_published": "2026-06-20T11:07:31.386330Z",
+    "filename": "geckolib-forge-1.20.1-4.8.4.jar",
+    "api_size_bytes": 1038209,
+    "local_size_bytes": 1038209,
+    "api_hashes": {
+      "sha1": "50e1407869ef0e909e3bdda9328b8bd7db03fdc0",
+      "sha512": "443a321a293e3cb92fbbc3c97a38b179a45d1db703cd7bdb123270a9e04e7b7d67d5b06cd8e77a6d4d9139e033e901b9660cccf53ad5f9beaae6d06eae68febf"
+    },
+    "computed_hashes": {
+      "sha1": "50e1407869ef0e909e3bdda9328b8bd7db03fdc0",
+      "sha256": "4518779a31b6c2abb92c98b5ad17ef3d60177df68626bfc86c44de2764913c2b",
+      "sha512": "443a321a293e3cb92fbbc3c97a38b179a45d1db703cd7bdb123270a9e04e7b7d67d5b06cd8e77a6d4d9139e033e901b9660cccf53ad5f9beaae6d06eae68febf"
+    },
+    "verification": {
+      "api_sha1_matches": true,
+      "api_sha512_matches": true,
+      "api_size_matches": true,
+      "manifest_implementation_version": "4.8.4"
+    },
+    "changelog": "v4.8.4\n\n- Updated the logo\n- Remove error logging for some versions since GeckoLib does actually support face UV rotation\n- Added some nullability markers to GeoCubes\n- Changed the error message for GeckoLib Oculus Compat to maybe be more clear\n- Adjusted the deprecation on GeoRenderer#getPackedOverlay to not be as dramatic"
+  },
+  "baseline": {
+    "local_path": "/home/ubuntu/midland-guard-visual/geckolib/geckolib-forge-1.20.1-4.7.2.jar",
+    "modrinth_api_url": "https://api.modrinth.com/v2/version/AiVKLYep",
+    "cdn_url": "https://cdn.modrinth.com/data/8BmcQJ2H/versions/AiVKLYep/geckolib-forge-1.20.1-4.7.2.jar",
+    "version_id": "AiVKLYep",
+    "file_id": "D0ELCrlI",
+    "version_number": "4.7.2",
+    "name": "Forge 1.20.1",
+    "loaders": ["forge"],
+    "game_versions": ["1.20.1"],
+    "date_published": "2025-06-16T20:13:08.072727Z",
+    "filename": "geckolib-forge-1.20.1-4.7.2.jar",
+    "api_size_bytes": 1012625,
+    "local_size_bytes": 1012625,
+    "api_hashes": {
+      "sha1": "4635f16786b5a23b8d059e6c2c675d1c8dec01d6",
+      "sha512": "40aefbb89e4a65c1955bd05c13cb656c0902e545741770d9395037f6a87684e91676935e0d5b7be0419abd1599272fa3aa245dc3976208b82f568d994813e314"
+    },
+    "computed_hashes": {
+      "sha1": "4635f16786b5a23b8d059e6c2c675d1c8dec01d6",
+      "sha256": "a8ea443709fb960f2f7f4271137239fec04c0ed7225594b37d81730345637a12",
+      "sha512": "40aefbb89e4a65c1955bd05c13cb656c0902e545741770d9395037f6a87684e91676935e0d5b7be0419abd1599272fa3aa245dc3976208b82f568d994813e314"
+    },
+    "verification": {
+      "api_sha1_matches": true,
+      "api_sha512_matches": true,
+      "api_size_matches": true,
+      "manifest_implementation_version": "4.7.2"
+    },
+    "changelog": "v4.7.2\n\n- Fix GeoArmorRenderer sharing its animations when not registered as a synced animatable (#730)"
+  },
+  "api_changelog_query": "https://api.modrinth.com/v2/project/geckolib/version?loaders=%5B%22forge%22%5D&game_versions=%5B%221.20.1%22%5D",
+  "notes": [
+    "Modrinth's API exposes SHA-1 and SHA-512 for these files; SHA-256 is recorded as an additional locally computed digest.",
+    "No files in /home/ubuntu/The-Struggler were modified. No git operation or Gradle task was run."
+  ]
+}
