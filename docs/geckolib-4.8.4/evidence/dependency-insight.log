@@ -1,0 +1,23 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.8/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build
+
+> Task :dependencyInsight
+software.bernie.geckolib:geckolib-forge-1.20.1:4.8.4_mapped_official_1.20.1
+  Variant runtime:
+    | Attribute Name                 | Provided     | Requested    |
+    |--------------------------------|--------------|--------------|
+    | org.gradle.status              | integration  |              |
+    | org.gradle.category            | library      | library      |
+    | org.gradle.libraryelements     | jar          | jar          |
+    | org.gradle.usage               | java-runtime | java-runtime |
+    | org.gradle.dependency.bundling |              | external     |
+    | org.gradle.jvm.environment     |              | standard-jvm |
+    | org.gradle.jvm.version         |              | 17           |
+
+software.bernie.geckolib:geckolib-forge-1.20.1:{strictly 4.8.4_mapped_official_1.20.1} -> 4.8.4_mapped_official_1.20.1
+\--- runtimeClasspath
+
+A web-based, searchable dependency report is available by adding the --scan option.
+
+BUILD SUCCESSFUL in 10s
+1 actionable task: 1 executed

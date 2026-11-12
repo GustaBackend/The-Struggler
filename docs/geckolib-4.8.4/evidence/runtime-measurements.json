@@ -1,0 +1,24 @@
+{
+  "frontal": {
+    "before": 24.0,
+    "after": 18.0,
+    "damage": 6.0,
+    "expected": 6.0
+  },
+  "rear": {
+    "before": 24.0,
+    "after": 14.0,
+    "damage": 10.0,
+    "expected": 10.0
+  },
+  "real_combat_status": "Guard status: phase=WINDUP target=Zombie cooldown=0t strikes=5 impactAttempts=4 damageHits=4 attackDamage=4.0 difficulty=NORMAL blocking=false blockTicks=0 blockedHits=0 prevented=0.0 blockAttempts=116 blockRefusals=0\n",
+  "walk": {
+    "start": "Midland Guard has the following entity data: [0.5d, 100.0d, 5.5d]\n",
+    "end": "Midland Guard has the following entity data: [0.5d, 100.0d, -0.9114431369463184d]\n"
+  },
+  "run": {
+    "start": "Midland Guard has the following entity data: [0.5d, 100.0d, 5.5d]\n",
+    "end": "Midland Guard has the following entity data: [0.5d, 100.0d, -1.2757220346200675d]\n"
+  },
+  "death_entity_check": ""
+}

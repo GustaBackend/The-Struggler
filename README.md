@@ -2,9 +2,15 @@
 
 Minecraft Java **1.20.1**, Forge **47.4.28**, Java **17**, Gradle **8.8**.
 
-A versão atual é a **0.3.3** (branch `feature/midland-guard-refinement-0.3.3`), um refinamento da defesa do Guarda de Midland sobre a 0.3.2: classificação explícita dos tipos de dano defensáveis, prioridade de animação extraída e testável, e limpeza de condições redundantes. O visual continua o da 0.2.0: proporções vanilla, capacete fechado, armadura volumétrica e animações nativas de **GeckoLib 4.7.2**. A fundação `feature/phase-1-foundation` permanece preservada.
+## Experimento GeckoLib 4.8.4 — Etapa técnica A
 
-## Instalação
+Esta branch deriva diretamente de `v0.3.3` e gera `struggler-0.3.3-gecko484-exp1.jar`. Instale esse JAR com **GeckoLib Forge 1.20.1 4.8.4**, em uma instância separada. Os metadados exigem exatamente 4.8.4 para isolar a validação. Não instale duas versões do Struggler ou do GeckoLib na mesma pasta `mods`.
+
+Nenhum código Java, teste ou recurso visual foi alterado. O relatório com 38 testes unitários, 26 GameTests e execução em servidor com dois clientes está em [docs/geckolib-4.8.4/relatorio.md](docs/geckolib-4.8.4/relatorio.md). A tag `v0.3.3`, a branch principal e os artefatos estáveis continuam preservados. Os parágrafos seguintes descrevem a base estável, não uma substituição automática dela.
+
+A base estável é a **0.3.3** (branch `feature/midland-guard-refinement-0.3.3`), um refinamento da defesa do Guarda de Midland sobre a 0.3.2: classificação explícita dos tipos de dano defensáveis, prioridade de animação extraída e testável, e limpeza de condições redundantes. O visual continua o da 0.2.0: proporções vanilla, capacete fechado, armadura volumétrica e animações nativas de **GeckoLib 4.7.2**. A fundação `feature/phase-1-foundation` permanece preservada.
+
+## Instalação da base estável
 
 Instale Forge 47.4.28 para Minecraft 1.20.1. Coloque `struggler-0.3.3.jar` e `geckolib-forge-1.20.1-4.7.2.jar` na pasta `mods`. Remova outras versões do Struggler dessa mesma instância. GeckoLib é dependência externa obrigatória, não está embutida no JAR do Struggler.
 
@@ -47,7 +53,7 @@ Com permissão de operador nível 2, use `/strugglerguard idle|walk|run|attack|d
 
 ## Compilação
 
-Execute `./gradlew build` com JDK 17, ou `gradlew.bat build` no Windows. O Gradle baixa GeckoLib pelo Maven oficial. O artefato é gerado em `build/libs/struggler-0.3.3.jar`.
+Execute `./gradlew build` com JDK 17, ou `gradlew.bat build` no Windows. O Gradle baixa GeckoLib pelo Maven oficial. Nesta branch, o artefato é `build/libs/struggler-0.3.3-gecko484-exp1.jar`; na tag estável `v0.3.3`, é `build/libs/struggler-0.3.3.jar`.
 
 `tools/generate_midland_gecko.py` é a fonte de geração da geometria, atlas e keyframes; executá-lo sobrescreve os exports. Alterações feitas diretamente no Blockbench devem ser exportadas para os recursos GeckoLib correspondentes e preservadas antes de regenerar.
 

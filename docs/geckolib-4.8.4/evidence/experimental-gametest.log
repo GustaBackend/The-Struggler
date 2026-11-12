@@ -1,0 +1,138 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.8/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build
+> Task :compileJava UP-TO-DATE
+> Task :processResources UP-TO-DATE
+> Task :classes UP-TO-DATE
+> Task :downloadMcpConfig
+> Task :extractSrg UP-TO-DATE
+> Task :createSrgToMcp
+> Task :downloadMCMeta UP-TO-DATE
+> Task :downloadAssets UP-TO-DATE
+> Task :extractNatives
+> Task :makeSrcDirs
+> Task :prepareRuns
+> Task :prepareRunGameTestServer
+> Task :prepareRunGameTestServerCompile UP-TO-DATE
+
+> Task :runGameTestServer
+2026-11-12 03:11:42,771 main WARN Advanced terminal features are not available in this environment
+[03:11:42] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgegametestserveruserdev, --gameDir, ., --fml.forgeVersion, 47.4.28, --fml.mcVersion, 1.20.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230612.114412]
+[03:11:42] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 17.0.21.0.3 by Ubuntu; OS Linux arch amd64 version 6.18.38+
+[03:11:42] [main/INFO] [ne.mi.fm.lo.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgegametestserveruserdev
+[03:11:42] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/home/ubuntu/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23116!/ Service=ModLauncher Env=SERVER
+[03:11:43] [main/WARN] [ne.mi.fm.lo.mo.ModFileParser/LOADING]: Mod file /home/ubuntu/.gradle/caches/modules-2/files-2.1/net.minecraftforge/javafmllanguage/1.20.1-47.4.28/2f0765ea31561e9dfaf8eb8b54ac0548cd857559/javafmllanguage-1.20.1-47.4.28.jar is missing mods.toml file
+[03:11:43] [main/WARN] [ne.mi.fm.lo.mo.ModFileParser/LOADING]: Mod file /home/ubuntu/.gradle/caches/modules-2/files-2.1/net.minecraftforge/lowcodelanguage/1.20.1-47.4.28/4e54a5f415a61888bd9c5d61b140ae5f86bf665f/lowcodelanguage-1.20.1-47.4.28.jar is missing mods.toml file
+[03:11:43] [main/WARN] [ne.mi.fm.lo.mo.ModFileParser/LOADING]: Mod file /home/ubuntu/.gradle/caches/modules-2/files-2.1/net.minecraftforge/mclanguage/1.20.1-47.4.28/4d3efb7da0466927cc5b1e4487c3d3c33ba842d0/mclanguage-1.20.1-47.4.28.jar is missing mods.toml file
+[03:11:43] [main/WARN] [ne.mi.fm.lo.mo.ModFileParser/LOADING]: Mod file /home/ubuntu/.gradle/caches/modules-2/files-2.1/net.minecraftforge/fmlcore/1.20.1-47.4.28/99808794b6f9f27ca527ad9db1203409fb8552f8/fmlcore-1.20.1-47.4.28.jar is missing mods.toml file
+[03:11:43] [main/INFO] [ne.mi.fm.lo.mo.JarInJarDependencyLocator/]: Found 1 dependencies adding them to mods collection
+[03:11:43] [main/INFO] [mixin/]: Compatibility level set to JAVA_17
+[03:11:43] [main/INFO] [cp.mo.mo.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgegametestserveruserdev' with arguments [--gameDir, .]
+[03:11:46] [modloading-worker-0/INFO] [ne.mi.co.ForgeMod/FORGEMOD]: Forge mod loading, version 47.4.28, for MC 1.20.1 with MCP 20230612.114412
+[03:11:46] [modloading-worker-0/INFO] [ne.mi.co.MinecraftForge/FORGE]: MinecraftForge v47.4.28 Initialized
+[03:11:46] [Forge Version Check/INFO] [ne.mi.fm.VersionChecker/]: [forge] Starting version check at https://files.minecraftforge.net/net/minecraftforge/forge/promotions_slim.json
+[03:11:47] [main/INFO] [mojang/YggdrasilAuthenticationService]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
+[03:11:47] [main/WARN] [ne.mi.co.ForgeHooks/WP]: The following mods have version differences that were not resolved:
+geckolib (version 4.7.2 -> 4.8.4)
+struggler (version 0.3.3 -> 0.3.3-gecko484-exp1)
+Things may not work well.
+[03:11:47] [main/WARN] [minecraft/VanillaPackResourcesBuilder]: Assets URL 'union:/home/ubuntu/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.4.28_mapped_official_1.20.1/forge-1.20.1-47.4.28_mapped_official_1.20.1.jar%23181!/assets/.mcassetsroot' uses unexpected schema
+[03:11:47] [main/WARN] [minecraft/VanillaPackResourcesBuilder]: Assets URL 'union:/home/ubuntu/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.4.28_mapped_official_1.20.1/forge-1.20.1-47.4.28_mapped_official_1.20.1.jar%23181!/data/.mcassetsroot' uses unexpected schema
+[03:11:48] [main/INFO] [minecraft/RecipeManager]: Loaded 7 recipes
+[03:11:48] [main/INFO] [minecraft/AdvancementList]: Loaded 1271 advancements
+[03:11:48] [Forge Version Check/INFO] [ne.mi.fm.VersionChecker/]: [forge] Found status: UP_TO_DATE Current: 47.4.28 Target: null
+[03:11:48] [main/INFO] [ne.mi.ga.ForgeGameTestHooks/]: Enabled Gametest Namespaces: [struggler]
+[03:11:49] [Server thread/INFO] [minecraft/MinecraftServer]: Preparing start region for dimension minecraft:overworld
+[03:11:50] [Worker-Main-1/INFO] [minecraft/LoggerChunkProgressListener]: Preparing spawn area: 0%
+[03:11:50] [Worker-Main-1/INFO] [minecraft/LoggerChunkProgressListener]: Preparing spawn area: 0%
+[03:11:50] [Worker-Main-1/INFO] [minecraft/LoggerChunkProgressListener]: Preparing spawn area: 0%
+[03:11:50] [Worker-Main-2/INFO] [minecraft/LoggerChunkProgressListener]: Preparing spawn area: 0%
+[03:11:51] [Worker-Main-2/INFO] [minecraft/LoggerChunkProgressListener]: Preparing spawn area: 17%
+[03:11:51] [Server thread/INFO] [minecraft/LoggerChunkProgressListener]: Time elapsed: 2340 ms
+[03:11:51] [Server thread/INFO] [minecraft/GameTestServer]: Started game test server
+[03:11:51] [Server thread/INFO] [ne.mi.se.pe.PermissionAPI/]: Successfully initialized permission handler forge:default_handler
+[03:11:51] [Server thread/INFO] [minecraft/GameTestBatchRunner]: Running test batch 'guardDefenseExclusive:1' (1 tests)...
+[03:11:51] [Server thread/INFO] [minecraft/GameTestServer]: 26 tests are now running!
+[03:11:51] [Server thread/INFO] [minecraft/GameTestBatchRunner]: Running test batch 'guardCombatRetaliation:1' (1 tests)...
+[03:11:52] [Server thread/INFO] [minecraft/GameTestBatchRunner]: Running test batch 'guardDefenseNotInvulnerable:1' (1 tests)...
+[03:11:52] [Server thread/INFO] [minecraft/GameTestBatchRunner]: Running test batch 'guardDefenseRetaliation:1' (1 tests)...
+[03:11:52] [Server thread/INFO] [minecraft/GameTestServer]: [+++                       ]
+[03:11:52] [Server thread/INFO] [minecraft/GameTestBatchRunner]: Running test batch 'guardDamageExplosion:1' (1 tests)...
+[03:11:52] [Server thread/INFO] [minecraft/GameTestBatchRunner]: Running test batch 'guardDamageNoAutoRaise:1' (1 tests)...
+[03:11:52] [Server thread/INFO] [minecraft/GameTestBatchRunner]: Running test batch 'guardDamageSword:1' (1 tests)...
+[03:11:52] [Server thread/INFO] [minecraft/GameTestBatchRunner]: Running test batch 'guardDamageAmbient:1' (1 tests)...
+[03:11:52] [Server thread/INFO] [minecraft/GameTestBatchRunner]: Running test batch 'guardDamageMobProjectile:1' (1 tests)...
+[03:11:52] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++_                 ]
+[03:11:52] [Server thread/INFO] [minecraft/GameTestBatchRunner]: Running test batch 'guardCombatFriendly:1' (1 tests)...
+[03:11:52] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++_                ]
+[03:11:52] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++_                ]
+[03:11:52] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++_                ]
+[03:11:52] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++_                ]
+[03:11:52] [Server thread/INFO] [minecraft/GameTestBatchRunner]: Running test batch 'guardDefenseBackstab:1' (1 tests)...
+[03:11:52] [Server thread/INFO] [minecraft/GameTestBatchRunner]: Running test batch 'guardDefenseTimeout:1' (1 tests)...
+[03:11:52] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++_              ]
+[03:11:52] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++_              ]
+[03:11:52] [Server thread/INFO] [minecraft/GameTestBatchRunner]: Running test batch 'guardDamageArrowBack:1' (1 tests)...
+[03:11:53] [Server thread/INFO] [minecraft/GameTestBatchRunner]: Running test batch 'guardDamageFall:1' (1 tests)...
+[03:11:53] [Server thread/INFO] [minecraft/GameTestBatchRunner]: Running test batch 'guardDamageMagic:1' (1 tests)...
+[03:11:53] [Server thread/INFO] [minecraft/GameTestBatchRunner]: Running test batch 'guardDefenseNoAi:1' (1 tests)...
+[03:11:53] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++_          ]
+[03:11:53] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++_          ]
+[03:11:53] [Server thread/INFO] [minecraft/GameTestBatchRunner]: Running test batch 'guardDamageFire:1' (1 tests)...
+[03:11:53] [Server thread/INFO] [minecraft/GameTestBatchRunner]: Running test batch 'guardDefenseOpen:1' (1 tests)...
+[03:11:53] [Server thread/INFO] [minecraft/GameTestBatchRunner]: Running test batch 'guardDefenseFrontal:1' (1 tests)...
+[03:11:53] [Server thread/INFO] [minecraft/GameTestBatchRunner]: Running test batch 'guardCombatDamage:1' (1 tests)...
+[03:11:53] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++_      ]
+[03:11:53] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++_      ]
+[03:11:53] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++_      ]
+[03:11:53] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++_      ]
+[03:11:53] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++_      ]
+[03:11:53] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++_      ]
+[03:11:53] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++_      ]
+[03:11:53] [Server thread/INFO] [minecraft/GameTestBatchRunner]: Running test batch 'guardDamageArrow:1' (1 tests)...
+[03:11:53] [Server thread/INFO] [minecraft/GameTestBatchRunner]: Running test batch 'guardCombatPlayerAttacker:1' (1 tests)...
+[03:11:53] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++_    ]
+[03:11:53] [Server thread/INFO] [minecraft/GameTestBatchRunner]: Running test batch 'guardCombatUnprovoked:1' (1 tests)...
+[03:11:53] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++_   ]
+[03:11:53] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++_   ]
+[03:11:53] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++_   ]
+[03:11:53] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++_   ]
+[03:11:54] [Server thread/INFO] [minecraft/GameTestBatchRunner]: Running test batch 'guardCombatImpact:1' (1 tests)...
+[03:11:54] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++_  ]
+[03:11:54] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++_  ]
+[03:11:54] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++_  ]
+[03:11:54] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++_  ]
+[03:11:54] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++_  ]
+[03:11:54] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++_  ]
+[03:11:54] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++_  ]
+[03:11:54] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++_  ]
+[03:11:54] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++_  ]
+[03:11:54] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++_  ]
+[03:11:54] [Server thread/INFO] [minecraft/GameTestBatchRunner]: Running test batch 'guardDefenseCycle:1' (1 tests)...
+[03:11:54] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++_ ]
+[03:11:54] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++_ ]
+[03:11:54] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++_ ]
+[03:11:54] [Server thread/INFO] [minecraft/GameTestBatchRunner]: Running test batch 'guardDamageDeathClears:1' (1 tests)...
+[03:11:54] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++]
+[03:11:54] [Server thread/INFO] [minecraft/GameTestServer]: ========= 26 GAME TESTS COMPLETE ======================
+[03:11:54] [Server thread/INFO] [minecraft/GameTestServer]: All 26 required tests passed :)
+[03:11:54] [Server thread/INFO] [minecraft/GameTestServer]: ====================================================
+[03:11:54] [Server thread/INFO] [minecraft/MinecraftServer]: Stopping server
+[03:11:54] [Server thread/INFO] [minecraft/MinecraftServer]: Saving players
+[03:11:54] [Server thread/INFO] [minecraft/MinecraftServer]: Saving worlds
+[03:11:54] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[03:11:55] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
+[03:11:55] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
+[03:11:55] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[03:11:55] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[03:11:55] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[03:11:55] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage: All dimensions are saved
+[03:11:56] [Server thread/INFO] [minecraft/GameTestServer]: Game test server shutting down
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.8/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 23s
+10 actionable tasks: 5 executed, 5 up-to-date

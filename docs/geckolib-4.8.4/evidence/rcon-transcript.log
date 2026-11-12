@@ -1,0 +1,227 @@
+2026-11-12T03:12:22 gamerule doMobSpawning false -> Gamerule doMobSpawning is now set to: false
+
+2026-11-12T03:12:22 gamerule doDaylightCycle false -> Gamerule doDaylightCycle is now set to: false
+
+2026-11-12T03:12:22 time set noon -> Set the time to 6000
+
+2026-11-12T03:12:22 weather clear -> Set the weather to clear
+
+2026-11-12T03:12:22 fill -20 99 -20 20 99 30 minecraft:stone -> Successfully filled 2091 block(s)
+
+2026-11-12T03:12:22 forceload add -20 -20 20 30 -> Marked [-2, -2] chunks in minecraft:overworld from [-2, -2] to [1, 1] to be force loaded
+
+2026-11-12T03:12:47 gamemode creative @a -> Set MigrationA's game mode to Creative Mode
+Set MigrationB's game mode to Creative Mode
+
+2026-11-12T03:12:47 tp MigrationA 0 100 2 0 0 -> Teleported MigrationA to 0.500000, 100.000000, 2.500000
+
+2026-11-12T03:12:47 tp MigrationB 2 100 2 25 0 -> Teleported MigrationB to 2.500000, 100.000000, 2.500000
+
+2026-11-12T03:12:47 summon struggler:midland_guard 0 100 5 {Tags:["qa"],NoAI:1b,Rotation:[180f,0f],PersistenceRequired:1b} -> Summoned new Midland Guard
+
+2026-11-12T03:12:47 list -> There are 2 of a max of 20 players online: MigrationA, MigrationB
+
+2026-11-12T03:13:35 strugglerguard block @e[type=struggler:midland_guard,tag=qa,limit=1] -> Midland Guard shield raised for 20 ticks.
+
+2026-11-12T03:13:35 strugglerguard block @e[type=struggler:midland_guard,tag=qa,limit=1] -> Midland Guard shield raised for 20 ticks.
+
+2026-11-12T03:13:36 strugglerguard block @e[type=struggler:midland_guard,tag=qa,limit=1] -> Midland Guard shield raised for 20 ticks.
+
+2026-11-12T03:13:36 strugglerguard block @e[type=struggler:midland_guard,tag=qa,limit=1] -> Midland Guard shield raised for 20 ticks.
+
+2026-11-12T03:13:36 damage @e[type=struggler:midland_guard,tag=qa,limit=1] 2 minecraft:magic -> Applied 2.0 damage to Midland Guard
+
+2026-11-12T03:13:36 strugglerguard block @e[type=struggler:midland_guard,tag=qa,limit=1] -> Midland Guard shield raised for 20 ticks.
+
+2026-11-12T03:13:37 strugglerguard block @e[type=struggler:midland_guard,tag=qa,limit=1] -> Midland Guard shield raised for 20 ticks.
+
+2026-11-12T03:13:37 strugglerguard block @e[type=struggler:midland_guard,tag=qa,limit=1] -> Midland Guard shield raised for 20 ticks.
+
+2026-11-12T03:13:38 strugglerguard status @e[type=struggler:midland_guard,tag=qa,limit=1] -> Guard status: phase=IDLE target=none cooldown=0t strikes=0 impactAttempts=0 damageHits=0 attackDamage=4.0 difficulty=NORMAL blocking=false blockTicks=0 blockedHits=0 prevented=0.0 blockAttempts=7 blockRefusals=0
+
+2026-11-12T03:13:39 strugglerguard attack @e[type=struggler:midland_guard,tag=qa,limit=1] -> Midland Guard animation preview: attack (32 ticks).
+
+2026-11-12T03:13:41 strugglerguard attack @e[type=struggler:midland_guard,tag=qa,limit=1] -> Midland Guard animation preview: attack (32 ticks).
+
+2026-11-12T03:13:43 strugglerguard defend @e[type=struggler:midland_guard,tag=qa,limit=1] -> Midland Guard animation preview: defend (40 ticks).
+
+2026-11-12T03:13:46 kill @e[type=struggler:midland_guard] -> Killed Midland Guard
+
+2026-11-12T03:13:46 kill @e[type=minecraft:zombie] -> No entity was found
+
+2026-11-12T03:13:46 summon struggler:midland_guard 0 100 5 {Tags:["qa"],NoAI:1b,Rotation:[180f,0f],PersistenceRequired:1b} -> Summoned new Midland Guard
+
+2026-11-12T03:13:47 data get entity @e[type=struggler:midland_guard,tag=qa,limit=1] Health -> Midland Guard has the following entity data: 24.0f
+
+2026-11-12T03:13:47 strugglerguard block @e[type=struggler:midland_guard,tag=qa,limit=1] -> Midland Guard shield raised for 20 ticks.
+
+2026-11-12T03:13:47 damage @e[type=struggler:midland_guard,tag=qa,limit=1] 10 minecraft:player_attack by MigrationA -> Applied 10.0 damage to Midland Guard
+
+2026-11-12T03:13:47 data get entity @e[type=struggler:midland_guard,tag=qa,limit=1] Health -> Midland Guard has the following entity data: 18.0f
+
+2026-11-12T03:13:47 strugglerguard status @e[type=struggler:midland_guard,tag=qa,limit=1] -> Guard status: phase=IDLE target=none cooldown=0t strikes=0 impactAttempts=0 damageHits=0 attackDamage=4.0 difficulty=NORMAL blocking=true blockTicks=20 blockedHits=1 prevented=4.0 blockAttempts=2 blockRefusals=0
+
+2026-11-12T03:13:48 data merge entity @e[type=struggler:midland_guard,tag=qa,limit=1] {Health:24f,Rotation:[0f,0f]} -> Modified entity data of Midland Guard
+
+2026-11-12T03:13:48 data get entity @e[type=struggler:midland_guard,tag=qa,limit=1] Health -> Midland Guard has the following entity data: 24.0f
+
+2026-11-12T03:13:48 strugglerguard block @e[type=struggler:midland_guard,tag=qa,limit=1] -> Midland Guard shield raised for 20 ticks.
+
+2026-11-12T03:13:48 damage @e[type=struggler:midland_guard,tag=qa,limit=1] 10 minecraft:player_attack by MigrationA -> Applied 10.0 damage to Midland Guard
+
+2026-11-12T03:13:48 data get entity @e[type=struggler:midland_guard,tag=qa,limit=1] Health -> Midland Guard has the following entity data: 14.0f
+
+2026-11-12T03:13:48 strugglerguard status @e[type=struggler:midland_guard,tag=qa,limit=1] -> Guard status: phase=IDLE target=none cooldown=0t strikes=0 impactAttempts=0 damageHits=0 attackDamage=4.0 difficulty=NORMAL blocking=true blockTicks=20 blockedHits=1 prevented=4.0 blockAttempts=3 blockRefusals=0
+
+2026-11-12T03:13:48 kill @e[type=struggler:midland_guard] -> Killed Midland Guard
+
+2026-11-12T03:13:48 kill @e[type=minecraft:zombie] -> No entity was found
+
+2026-11-12T03:13:48 summon struggler:midland_guard 0 100 5 {Tags:["qa"],NoAI:0b,Rotation:[180f,0f],PersistenceRequired:1b} -> Summoned new Midland Guard
+
+2026-11-12T03:13:48 summon minecraft:zombie 0 100 6.5 {Tags:["dummy"],NoAI:1b,PersistenceRequired:1b,Silent:1b,Attributes:[{Name:"minecraft:generic.max_health",Base:100d}],Health:100f} -> Summoned new Zombie
+
+2026-11-12T03:13:49 strugglerguard status @e[type=struggler:midland_guard,tag=qa,limit=1] -> Guard status: phase=RECOVERY target=Zombie cooldown=0t strikes=1 impactAttempts=1 damageHits=1 attackDamage=4.0 difficulty=NORMAL blocking=false blockTicks=0 blockedHits=0 prevented=0.0 blockAttempts=0 blockRefusals=0
+
+2026-11-12T03:13:51 strugglerguard status @e[type=struggler:midland_guard,tag=qa,limit=1] -> Guard status: phase=ATTACKING target=Zombie cooldown=0t strikes=2 impactAttempts=2 damageHits=2 attackDamage=4.0 difficulty=NORMAL blocking=false blockTicks=0 blockedHits=0 prevented=0.0 blockAttempts=29 blockRefusals=0
+
+2026-11-12T03:13:54 strugglerguard status @e[type=struggler:midland_guard,tag=qa,limit=1] -> Guard status: phase=IDLE target=Zombie cooldown=29t strikes=3 impactAttempts=3 damageHits=3 attackDamage=4.0 difficulty=NORMAL blocking=true blockTicks=20 blockedHits=0 prevented=0.0 blockAttempts=59 blockRefusals=0
+
+2026-11-12T03:13:57 data get entity @e[type=minecraft:zombie,tag=dummy,limit=1] Health -> Zombie has the following entity data: 78.248f
+
+2026-11-12T03:13:58 strugglerguard status @e[type=struggler:midland_guard,tag=qa,limit=1] -> Guard status: phase=WINDUP target=Zombie cooldown=0t strikes=5 impactAttempts=4 damageHits=4 attackDamage=4.0 difficulty=NORMAL blocking=false blockTicks=0 blockedHits=0 prevented=0.0 blockAttempts=116 blockRefusals=0
+
+2026-11-12T03:13:58 kill @e[type=struggler:midland_guard] -> Killed Midland Guard
+
+2026-11-12T03:13:58 kill @e[type=minecraft:zombie] -> Killed Zombie
+
+2026-11-12T03:13:58 summon struggler:midland_guard 0 100 5 {Tags:["qa"],NoAI:0b,Rotation:[180f,0f],PersistenceRequired:1b} -> Summoned new Midland Guard
+
+2026-11-12T03:13:59 tp MigrationA -4 100 1 -90 0 -> Teleported MigrationA to -3.500000, 100.000000, 1.500000
+
+2026-11-12T03:13:59 tp MigrationB -4 100 3 -90 0 -> Teleported MigrationB to -3.500000, 100.000000, 3.500000
+
+2026-11-12T03:13:59 data get entity @e[type=struggler:midland_guard,tag=qa,limit=1] Pos -> Midland Guard has the following entity data: [0.5d, 100.0d, 5.5d]
+
+2026-11-12T03:14:00 strugglerguard walk @e[type=struggler:midland_guard,tag=qa,limit=1] -> Midland Guard animation preview: walk (100 ticks).
+
+2026-11-12T03:14:04 data get entity @e[type=struggler:midland_guard,tag=qa,limit=1] Pos -> Midland Guard has the following entity data: [0.5d, 100.0d, -0.11244663591057863d]
+
+2026-11-12T03:14:04 data get entity @e[type=struggler:midland_guard,tag=qa,limit=1] Pos -> Midland Guard has the following entity data: [0.5d, 100.0d, -0.9114431369463184d]
+
+2026-11-12T03:14:04 kill @e[type=struggler:midland_guard] -> Killed Midland Guard
+
+2026-11-12T03:14:04 kill @e[type=minecraft:zombie] -> No entity was found
+
+2026-11-12T03:14:04 summon struggler:midland_guard 0 100 5 {Tags:["qa"],NoAI:0b,Rotation:[180f,0f],PersistenceRequired:1b} -> Summoned new Midland Guard
+
+2026-11-12T03:14:05 tp MigrationA -4 100 1 -90 0 -> Teleported MigrationA to -3.500000, 100.000000, 1.500000
+
+2026-11-12T03:14:05 tp MigrationB -4 100 3 -90 0 -> Teleported MigrationB to -3.500000, 100.000000, 3.500000
+
+2026-11-12T03:14:05 data get entity @e[type=struggler:midland_guard,tag=qa,limit=1] Pos -> Midland Guard has the following entity data: [0.5d, 100.0d, 5.5d]
+
+2026-11-12T03:14:06 strugglerguard run @e[type=struggler:midland_guard,tag=qa,limit=1] -> Midland Guard animation preview: run (100 ticks).
+
+2026-11-12T03:14:09 data get entity @e[type=struggler:midland_guard,tag=qa,limit=1] Pos -> Midland Guard has the following entity data: [0.5d, 100.0d, -1.2757220346200675d]
+
+2026-11-12T03:14:10 data get entity @e[type=struggler:midland_guard,tag=qa,limit=1] Pos -> Midland Guard has the following entity data: [0.5d, 100.0d, -1.2757220346200675d]
+
+2026-11-12T03:14:10 kill @e[type=struggler:midland_guard] -> Killed Midland Guard
+
+2026-11-12T03:14:10 kill @e[type=minecraft:zombie] -> No entity was found
+
+2026-11-12T03:14:10 summon struggler:midland_guard 0 100 5 {Tags:["qa"],NoAI:1b,Rotation:[180f,0f],PersistenceRequired:1b} -> Summoned new Midland Guard
+
+2026-11-12T03:14:11 tp MigrationA 0 100 2 0 0 -> Teleported MigrationA to 0.500000, 100.000000, 2.500000
+
+2026-11-12T03:14:11 tp MigrationB 2 100 2 25 0 -> Teleported MigrationB to 2.500000, 100.000000, 2.500000
+
+2026-11-12T03:14:12 damage @e[type=struggler:midland_guard,tag=qa,limit=1] 100 minecraft:magic -> Applied 100.0 damage to Midland Guard
+
+2026-11-12T03:14:14 execute if entity @e[type=struggler:midland_guard,tag=qa] run say QA_GUARD_STILL_EXISTS ->
+2026-11-12T03:14:15 execute unless entity @e[type=struggler:midland_guard,tag=qa] run say QA_GUARD_REMOVED ->
+2026-11-12T03:14:15 kill @e[type=struggler:midland_guard] -> No entity was found
+
+2026-11-12T03:14:15 kill @e[type=minecraft:zombie] -> No entity was found
+
+2026-11-12T03:14:15 summon struggler:midland_guard 0 100 5 {Tags:["qa"],NoAI:1b,Rotation:[180f,0f],PersistenceRequired:1b} -> Summoned new Midland Guard
+
+2026-11-12T03:14:16 save-all flush -> Saving the game (this may take a moment!)
+Saved the game
+
+2026-11-12T03:15:47 gamemode spectator @a -> Set MigrationA's game mode to Spectator Mode
+Set MigrationB's game mode to Spectator Mode
+
+2026-11-12T03:15:47 tp MigrationA 0.5 100 2.5 0 0 -> Teleported MigrationA to 0.500000, 100.000000, 2.500000
+
+2026-11-12T03:15:47 tp MigrationB 0.5 100 2.5 0 0 -> Teleported MigrationB to 0.500000, 100.000000, 2.500000
+
+2026-11-12T03:15:49 strugglerguard block @e[type=struggler:midland_guard,tag=qa,limit=1] -> Midland Guard shield raised for 20 ticks.
+
+2026-11-12T03:15:49 strugglerguard block @e[type=struggler:midland_guard,tag=qa,limit=1] -> Midland Guard shield raised for 20 ticks.
+
+2026-11-12T03:15:50 strugglerguard block @e[type=struggler:midland_guard,tag=qa,limit=1] -> Midland Guard shield raised for 20 ticks.
+
+2026-11-12T03:15:50 strugglerguard block @e[type=struggler:midland_guard,tag=qa,limit=1] -> Midland Guard shield raised for 20 ticks.
+
+2026-11-12T03:15:50 strugglerguard block @e[type=struggler:midland_guard,tag=qa,limit=1] -> Midland Guard shield raised for 20 ticks.
+
+2026-11-12T03:15:51 strugglerguard block @e[type=struggler:midland_guard,tag=qa,limit=1] -> Midland Guard shield raised for 20 ticks.
+
+2026-11-12T03:15:51 strugglerguard block @e[type=struggler:midland_guard,tag=qa,limit=1] -> Midland Guard shield raised for 20 ticks.
+
+2026-11-12T03:15:51 strugglerguard block @e[type=struggler:midland_guard,tag=qa,limit=1] -> Midland Guard shield raised for 20 ticks.
+
+2026-11-12T03:15:52 strugglerguard block @e[type=struggler:midland_guard,tag=qa,limit=1] -> Midland Guard shield raised for 20 ticks.
+
+2026-11-12T03:15:52 strugglerguard block @e[type=struggler:midland_guard,tag=qa,limit=1] -> Midland Guard shield raised for 20 ticks.
+
+2026-11-12T03:15:54 strugglerguard block @e[type=struggler:midland_guard,tag=qa,limit=1] -> Midland Guard shield raised for 20 ticks.
+
+2026-11-12T03:15:54 strugglerguard status @e[type=struggler:midland_guard,tag=qa,limit=1] -> Guard status: phase=IDLE target=none cooldown=0t strikes=0 impactAttempts=0 damageHits=0 attackDamage=4.0 difficulty=NORMAL blocking=true blockTicks=18 blockedHits=0 prevented=0.0 blockAttempts=11 blockRefusals=0
+
+2026-11-12T03:15:54 time set midnight -> Set the time to 18000
+
+2026-11-12T03:15:54 kill @e[type=struggler:midland_guard] -> Killed Midland Guard
+
+2026-11-12T03:15:55 summon struggler:midland_guard 0.5 100 5.5 {Tags:["qa"],Rotation:[180f,0f],PersistenceRequired:1b} -> Summoned new Midland Guard
+
+2026-11-12T03:15:56 summon minecraft:zombie 0.5 100 7.0 {Tags:["dummy"],NoAI:1b,Silent:1b,PersistenceRequired:1b} -> Summoned new Zombie
+
+2026-11-12T03:15:56 attribute @e[type=minecraft:zombie,tag=dummy,limit=1] minecraft:generic.max_health base set 100 -> Base value for attribute Max Health for entity Zombie set to 100.0
+
+2026-11-12T03:15:56 data merge entity @e[type=minecraft:zombie,tag=dummy,limit=1] {Health:100f} -> Modified entity data of Zombie
+
+2026-11-12T03:15:58 strugglerguard status @e[type=struggler:midland_guard,tag=qa,limit=1] -> Guard status: phase=IDLE target=Zombie cooldown=21t strikes=1 impactAttempts=1 damageHits=1 attackDamage=4.0 difficulty=NORMAL blocking=true blockTicks=20 blockedHits=0 prevented=0.0 blockAttempts=9 blockRefusals=0
+
+2026-11-12T03:16:01 strugglerguard status @e[type=struggler:midland_guard,tag=qa,limit=1] -> Guard status: phase=IDLE target=Zombie cooldown=10t strikes=2 impactAttempts=2 damageHits=2 attackDamage=4.0 difficulty=NORMAL blocking=true blockTicks=20 blockedHits=0 prevented=0.0 blockAttempts=49 blockRefusals=0
+
+2026-11-12T03:16:04 strugglerguard status @e[type=struggler:midland_guard,tag=qa,limit=1] -> Guard status: phase=IDLE target=Zombie cooldown=9t strikes=3 impactAttempts=3 damageHits=3 attackDamage=4.0 difficulty=NORMAL blocking=true blockTicks=20 blockedHits=0 prevented=0.0 blockAttempts=79 blockRefusals=0
+
+2026-11-12T03:16:04 data get entity @e[type=minecraft:zombie,tag=dummy,limit=1] Health -> Zombie has the following entity data: 88.19201f
+
+2026-11-12T03:16:05 kill @e[type=minecraft:zombie] -> Killed Zombie
+
+2026-11-12T03:16:05 kill @e[type=struggler:midland_guard] -> Killed Midland Guard
+
+2026-11-12T03:16:07 time set noon -> Set the time to 6000
+
+2026-11-12T03:16:07 summon struggler:midland_guard 0.5 100 5.5 {Tags:["qa"],NoAI:1b,Rotation:[180f,0f],PersistenceRequired:1b} -> Summoned new Midland Guard
+
+2026-11-12T03:16:46 strugglerguard block @e[type=struggler:midland_guard,tag=qa,limit=1] -> Midland Guard shield raised for 20 ticks.
+
+2026-11-12T03:16:46 strugglerguard block @e[type=struggler:midland_guard,tag=qa,limit=1] -> Midland Guard shield raised for 20 ticks.
+
+2026-11-12T03:16:46 strugglerguard block @e[type=struggler:midland_guard,tag=qa,limit=1] -> Midland Guard shield raised for 20 ticks.
+
+2026-11-12T03:16:46 strugglerguard block @e[type=struggler:midland_guard,tag=qa,limit=1] -> Midland Guard shield raised for 20 ticks.
+
+2026-11-12T03:16:47 strugglerguard status @e[type=struggler:midland_guard,tag=qa,limit=1] -> Guard status: phase=IDLE target=none cooldown=0t strikes=0 impactAttempts=0 damageHits=0 attackDamage=4.0 difficulty=NORMAL blocking=true blockTicks=14 blockedHits=0 prevented=0.0 blockAttempts=4 blockRefusals=0
+
+2026-11-12T03:17:27 list -> There are 2 of a max of 20 players online: MigrationA, MigrationB
+
+2026-11-12T03:17:27 save-all flush -> Saving the game (this may take a moment!)
+Saved the game
+
+2026-11-12T03:17:27 stop -> Stopping the server

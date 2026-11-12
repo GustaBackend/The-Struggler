@@ -1,0 +1,3 @@
+b83dbc9fa04fbcd8ce7040d09c613f4ee75552e152c5398be19044069c5defe7  struggler-0.3.3-gecko484-exp1.jar
+1380a3c0cd833cd5894d9e97d04083a7cb152ea0b42babbb2bae37ee74b03f9e  struggler-gecko484-exp1-evidencias.zip
+f2a3eb195ccc9e91a4436e4f5da7052473a071a9488a9d454aecbc38a895587c  relatorio-geckolib-4.8.4.md

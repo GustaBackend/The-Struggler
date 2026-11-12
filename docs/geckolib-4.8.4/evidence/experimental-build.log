@@ -1,0 +1,122 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.8/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build
+> Task :clean
+
+> Task :compileJava
+/home/ubuntu/The-Struggler/src/main/java/com/struggler/TheStruggler.java:15: warning: [removal] get() in FMLJavaModLoadingContext has been deprecated and marked for removal
+        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+                                                        ^
+/home/ubuntu/The-Struggler/src/main/java/com/struggler/client/model/MidlandGuardModel.java:16: warning: [removal] ResourceLocation(String,String) in ResourceLocation has been deprecated and marked for removal
+        return new ResourceLocation(TheStruggler.MOD_ID, "geo/midland_guard.geo.json");
+               ^
+/home/ubuntu/The-Struggler/src/main/java/com/struggler/client/model/MidlandGuardModel.java:21: warning: [removal] ResourceLocation(String,String) in ResourceLocation has been deprecated and marked for removal
+        return new ResourceLocation(TheStruggler.MOD_ID, "textures/entity/midland_guard.png");
+               ^
+/home/ubuntu/The-Struggler/src/main/java/com/struggler/client/model/MidlandGuardModel.java:26: warning: [removal] ResourceLocation(String,String) in ResourceLocation has been deprecated and marked for removal
+        return new ResourceLocation(TheStruggler.MOD_ID, "animations/midland_guard.animation.json");
+               ^
+4 warnings
+
+> Task :processResources
+> Task :classes
+> Task :jar
+> Task :downloadMcpConfig
+> Task :extractSrg
+> Task :createMcpToSrg
+> Task :reobfJar
+> Task :jarJar SKIPPED
+> Task :reobfJarJar SKIPPED
+> Task :assemble
+> Task :compileTestJava
+> Task :processTestResources NO-SOURCE
+> Task :testClasses
+
+> Task :test
+
+GuardAnimationPriorityTest > BLOCKING -> HURT -> IDLE when the window closed during the reaction PASSED
+
+GuardAnimationPriorityTest > death has absolute priority over every other state PASSED
+
+GuardAnimationPriorityTest > BLOCKING -> ATTACKING PASSED
+
+GuardAnimationPriorityTest > IDLE -> BLOCKING -> IDLE PASSED
+
+GuardAnimationPriorityTest > BLOCKING -> HURT -> BLOCKING while the shield is still up PASSED
+
+GuardAnimationPriorityTest > an expired or empty preview falls back to locomotion PASSED
+
+GuardAnimationPriorityTest > the QA preview never outranks blocking or combat PASSED
+
+GuardAnimationPriorityTest > ATTACKING -> RECOVERY -> IDLE PASSED
+
+GuardAnimationPriorityTest > the strike window outranks hurt so a hit never cancels a swing PASSED
+
+GuardAnimationPriorityTest > CHASE -> BLOCKING -> IDLE PASSED
+
+GuardCombatTimelineTest > tuningKeepsTheDocumentedValues() PASSED
+
+GuardCombatTimelineTest > invalidConfigurationIsRejected() PASSED
+
+GuardCombatTimelineTest > impactOccursExactlyOncePerStrike() PASSED
+
+GuardCombatTimelineTest > phasesFollowTheDocumentedOrder() PASSED
+
+GuardCombatTimelineTest > strikeCycleIsShorterThanTheServerCooldown() PASSED
+
+GuardCombatTimelineTest > impactTickIsTheFirstAttackingTick() PASSED
+
+GuardDamagePolicyTest > fall damage is not blocked PASSED
+
+GuardDamagePolicyTest > a projectile tag without a projectile entity is not blockable PASSED
+
+GuardDamagePolicyTest > a wither skull counts as a physical projectile PASSED
+
+GuardDamagePolicyTest > explosions are not blocked, even when a living owner is attached PASSED
+
+GuardDamagePolicyTest > ambient sources without an attacker are not blocked PASSED
+
+GuardDamagePolicyTest > freezing, drowning and lightning are not blocked PASSED
+
+GuardDamagePolicyTest > magic is never blocked, even when a caster is attached PASSED
+
+GuardDamagePolicyTest > sword and claw hits are physical contact and can be blocked PASSED
+
+GuardDamagePolicyTest > a fireball is fire first, projectile second, and stays unblocked PASSED
+
+GuardDamagePolicyTest > an arrow delivered by a real projectile can be blocked PASSED
+
+GuardDamagePolicyTest > a source that bypasses shields is respected even if it looks melee PASSED
+
+GuardDamagePolicyTest > fire is not blocked PASSED
+
+GuardDefenseRulesTest > attackerOutsideTheConeIsNotCovered() PASSED
+
+GuardDefenseRulesTest > preventedDamageMatchesTheDifference() PASSED
+
+GuardDefenseRulesTest > attackerAtContactRangeCountsAsFrontal() PASSED
+
+GuardDefenseRulesTest > attackerBehindIsNotCovered() PASSED
+
+GuardDefenseRulesTest > guardWithoutLookDirectionBlocksNothing() PASSED
+
+GuardDefenseRulesTest > blockingNeverMakesTheGuardInvulnerable() PASSED
+
+GuardDefenseRulesTest > attackerDirectlyInFrontIsInsideTheCone() PASSED
+
+GuardDefenseRulesTest > attackerAtTheEdgeOfTheConeIsStillCovered() PASSED
+
+GuardDefenseRulesTest > frontalDamageIsReducedByFortyPercent() PASSED
+
+GuardDefenseRulesTest > blockedHitKeepsTheMinimumDamageFloor() PASSED
+
+> Task :check
+> Task :build
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.8/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 22s
+10 actionable tasks: 10 executed

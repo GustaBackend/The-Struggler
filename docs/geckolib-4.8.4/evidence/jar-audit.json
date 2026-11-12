@@ -1,0 +1,21 @@
+{
+  "sha256": "b83dbc9fa04fbcd8ce7040d09c613f4ee75552e152c5398be19044069c5defe7",
+  "size": 61907,
+  "zip_error": null,
+  "changed_entries_vs_baseline": [
+    "META-INF/mods.toml"
+  ],
+  "clips": [
+    "animation.midland_guard.block",
+    "animation.midland_guard.idle",
+    "animation.midland_guard.walk",
+    "animation.midland_guard.run",
+    "animation.midland_guard.attack",
+    "animation.midland_guard.defend",
+    "animation.midland_guard.hurt",
+    "animation.midland_guard.death"
+  ],
+  "metadata": "modLoader=\"javafml\"\nloaderVersion=\"[47,)\"\nlicense=\"All Rights Reserved\"\n\n[[mods]]\nmodId=\"struggler\"\nversion=\"0.3.3-gecko484-exp1\"\ndisplayName=\"The Struggler\"\nauthors=\"The Struggler Project\"\ndescription='''An original dark fantasy content mod inspired by Berserk.'''\n\n[[dependencies.struggler]]\nmodId=\"forge\"\nmandatory=true\nversionRange=\"[47.4.28,)\"\nordering=\"NONE\"\nside=\"BOTH\"\n\n[[dependencies.struggler]]\nmodId=\"minecraft\"\nmandatory=true\nversionRange=\"[1.20.1,1.20.2)\"\nordering=\"NONE\"\nside=\"BOTH\"\n\n[[dependencies.struggler]]\nmodId=\"geckolib\"\nmandatory=true\nversionRange=\"[4.8.4]\"\nordering=\"AFTER\"\nside=\"BOTH\"\n",
+  "class_count": 23,
+  "geckolib_embedded": false
+}
